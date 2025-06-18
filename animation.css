@@ -1,0 +1,118 @@
+/* Fade-in up for sections and cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+section,
+.project-image-box,
+.contact-horizontal-box,
+.footer-content {
+    animation: fadeInUp 0.8s cubic-bezier(.39,.575,.565,1) both;
+}
+
+/* Staggered fade-in for project cards */
+.project-image-box {
+    animation-delay: 0.2s;
+}
+.project-image-box + .project-image-box {
+    animation-delay: 0.4s;
+}
+
+/* Button hover: modern lift and glow */
+.btn, .btn1, .btn2 {
+    transition: 
+        transform 0.18s cubic-bezier(.39,.575,.565,1), 
+        box-shadow 0.18s, 
+        background 0.18s;
+    will-change: transform, box-shadow;
+}
+.btn:hover, .btn1:hover, .btn2:hover {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 8px 32px 0 rgba(171, 118, 220, 0.18), 0 0 0 2px #a376e6;
+    background: linear-gradient(90deg, #a376e6 0%, #323483 100%);
+    color: #fff;
+}
+
+/* Project image hover: smooth zoom and shadow */
+.project-image-box img {
+    transition: transform 0.32s cubic-bezier(.39,.575,.565,1), box-shadow 0.22s;
+}
+.project-image-box img:hover {
+    transform: scale(1.045) rotate(-1.5deg);
+    box-shadow: 0 12px 36px 0 rgba(171, 118, 220, 0.22);
+}
+
+/* Icon bounce and color on hover */
+.contact-icon,
+.footer-icon {
+    transition: 
+        transform 0.18s cubic-bezier(.39,.575,.565,1), 
+        box-shadow 0.18s, 
+        background 0.18s;
+}
+.contact-icon:hover,
+.footer-icon:hover {
+    transform: scale(1.18) rotate(-8deg);
+    box-shadow: 0 4px 16px #fff3;
+    background: #f8f6ff;
+    filter: brightness(1.15);
+}
+
+/* Heart pulse in footer */
+.footer-heart {
+    color: #ff5e8e;
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin: 0 4px;
+    animation: pulse 1.2s infinite alternate;
+}
+@keyframes pulse {
+    to { transform: scale(1.15); }
+}
+
+/* Smooth underline for nav/footer links */
+#nav-list a, .footer-nav a {
+    position: relative;
+    transition: color 0.2s;
+}
+#nav-list a::after, .footer-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, #a376e6 0%, #323483 100%);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s;
+}
+#nav-list a:hover::after, .footer-nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Fade-in for footer */
+.footer-content {
+    animation: fadeInUp 1.2s 0.2s both;
+}
+
+/* Subtle fade for hr lines */
+hr {
+    opacity: 0.5;
+    animation: fadeInUp 0.7s both;
+}
+
+/* Contact section icons: staggered pop-in */
+.contact-icon {
+    opacity: 0;
+    animation: fadeInUp 0.7s both;
+}
+.contact-icon:nth-child(1) { animation-delay: 0.1s; }
+.contact-icon:nth-child(2) { animation-delay: 0.2s; }
+.contact-icon:nth-child(3) { animation-delay: 0.3s; }
